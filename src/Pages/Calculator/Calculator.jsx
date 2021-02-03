@@ -149,7 +149,7 @@ class Calculator extends Component {
   });
   SortableList = SortableContainer(({ items, type }) => {
     const { SortableItem } = this;
-    let classes = type === "NUMBER" ? "list-button-num" : "list-button-op";
+    let classes = type === "NUMBER" ? "list-button-num" : "list-button-op ";
     return (
       <div className={classes}>
         {items.map((btn, index) => (
