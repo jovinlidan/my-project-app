@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Form } from "react-bootstrap";
+import { SortableContainer, SortableElement } from "react-sortable-hoc";
+import Button from "./Button";
 import "./Calculator.css";
 class Calculator extends Component {
   OPERATOR = {
@@ -30,7 +32,14 @@ class Calculator extends Component {
       { value: "+", isOp: true },
       { value: "-", isOp: true },
       { value: "x", isOp: true },
-      { value: "/", isOp: true },
+      {
+        value: "/",
+        isOp: true,
+        isOperator: function () {
+          const { value } = this;
+          return isNaN();
+        },
+      },
     ],
   };
 
@@ -129,27 +138,43 @@ class Calculator extends Component {
     if (!result.destination) return;
     const { source, destination } = result;
     const items = Array.from(this.state.buttonList);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
+    const [reorderedItem] = items.splice(source.index, 1);
+    items.splice(destination.index, 0, reorderedItem);
     this.setState({ buttonList: items });
   };
-  renderButton = (type) => {
-    const { buttonList } = this.state;
-    return buttonList.map((btn, index) => {
-      return (
-        !btn.isOp === (type === "NUMBER") && (
-          <div
-            className={"btn btn-primary" + (index === 10 ? " span2" : "")}
-            onClick={() => this.handleClick(btn.value)}
-          >
-            {btn.value}
-          </div>
-        )
-      );
-    });
-  };
-
+  SortableItem = SortableElement(({ value: btn, type, index }) => {
+    return !btn.isOp === (type === "NUMBER") ? (
+      <div
+        className={"btn btn-primary" + (index === 10 ? " span2" : "")}
+        onClick={() => this.handleClick(btn.value)}
+        onMouseDown={this.handleMouseDown}
+      >
+        {btn.value}
+      </div>
+    ) : (
+      <div></div>
+    );
+  });
+  SortableList = SortableContainer(({ items, type }) => {
+    const { SortableItem } = this;
+    let classes = type === "NUMBER" ? "list-button-num" : "list-button-op ";
+    return (
+      <div className={classes}>
+        {items.map((btn, index) => (
+          <SortableItem
+            key={btn.value.toString()}
+            value={btn}
+            type={type}
+            index={index}
+          ></SortableItem>
+        ))}
+      </div>
+    );
+  });
   render() {
+    const { SortableList } = this;
+    const { buttonList } = this.state;
+    console.log(buttonList[15].isOperator());
     return (
       <div className="calculator">
         <div className="calculator-body shadow">
@@ -164,9 +189,24 @@ class Calculator extends Component {
           </div>
 
           <div className="bot-body">
-            <div className="list-button-num">{this.renderButton("NUMBER")}</div>
+            <SortableList
+              items={buttonList}
+              type="NUMBER"
+              onSortEnd={(result) => {
+                console.log(result);
+              }}
+              axis="xy"
+            ></SortableList>
+
             <div className="list-button-op">
-              {this.renderButton("OPERATOR")}
+              <SortableList
+                items={buttonList}
+                type="OPERATOR"
+                onSortEnd={(result) => {
+                  console.log(result);
+                }}
+                axis="xy"
+              ></SortableList>
             </div>
           </div>
         </div>
