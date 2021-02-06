@@ -1,10 +1,6 @@
-const Button = ({ onMouseDown, onClick, btn, className }) => {
+const Button = ({ onClick, btn, className }) => {
   return (
-    <div
-      className={className}
-      onClick={() => onClick(btn.name)}
-      onMouseDown={onMouseDown}
-    >
+    <div onClick={onClick} className={className}>
       {btn.name}
     </div>
   );
