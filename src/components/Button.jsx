@@ -1,7 +1,7 @@
-const Button = ({ onClick, btn, className }) => {
+const Button = ({ onClick, btn, className, value }) => {
   return (
     <div onClick={onClick} className={className}>
-      {btn.name}
+      {btn ? btn.name : value}
     </div>
   );
 };

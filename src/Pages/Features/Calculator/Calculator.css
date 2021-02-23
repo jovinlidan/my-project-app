@@ -1,10 +1,20 @@
 body {
   overflow: hidden;
-
   font-family: "Lato", sans-serif;
 }
 .calculator {
-  background-color: rgb(20, 19, 19);
+  background: #141e30; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #243b55,
+    #141e30
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #243b55,
+    #141e30
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -20,6 +30,7 @@ body {
 } */
 
 .calculator-wrapper {
+  background-color: #141e30;
   display: grid;
   grid-template-columns: auto auto auto auto;
   /* display: flex; */
@@ -42,7 +53,7 @@ body {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-
+  touch-action: none;
   user-select: none;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -54,7 +65,6 @@ body {
 }
 
 input[type="text"] {
-  overflow: scroll;
   font-size: 1.4em;
   grid-column: span 4;
   color: rgb(255, 255, 255);

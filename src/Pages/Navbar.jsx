@@ -12,11 +12,8 @@ const Navbar = () => {
           <NavLink className="navbar-item" to="/">
             HOME
           </NavLink>
-          <NavLink className="navbar-item" to="/calculator">
-            CALCULATOR
-          </NavLink>
-          <NavLink className="navbar-item" to="/tictactoe">
-            TICTACTOE
+          <NavLink className="navbar-item" to="/features">
+            FEATURES
           </NavLink>
           <NavLink className="navbar-item" to="/login">
             LOGIN

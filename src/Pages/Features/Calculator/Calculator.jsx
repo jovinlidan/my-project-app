@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SortableContainer, SortableElement } from "react-sortable-hoc";
 import { evaluate } from "mathjs";
+import arrayMove from "array-move";
 import {
   getButtons,
   isOperator,
   isNumber,
   BUTTONS,
-} from "../../services/ButtonCalculator";
-import Button from "./Button";
+} from "../../../services/ButtonCalculator";
+import Button from "../../../components/Button";
 import "./Calculator.css";
 
 const Calculator = () => {
   const [buttonList, setButtonList] = useState(getButtons());
   const [output, setOutput] = useState("0");
+
+  useEffect(() => {
+    setOverflow(); // MEMPERBAIKI MASALAH DRAG AND DROP
+  }, []);
+
+  const setOverflow = () => {
+    document.body.style.overflow = "hidden";
+  };
   const SortableItem = SortableElement(({ value: btn }) => {
     return (
       <Button
@@ -47,10 +56,12 @@ const Calculator = () => {
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
     let buttonCopy = [...buttonList];
-    [buttonCopy[oldIndex], buttonCopy[newIndex]] = [
-      buttonCopy[newIndex],
-      buttonCopy[oldIndex],
-    ];
+    // [buttonCopy[oldIndex], buttonCopy[newIndex]] = [
+    //   buttonCopy[newIndex],
+    //   buttonCopy[oldIndex],
+    // ];
+
+    buttonCopy = arrayMove(buttonCopy, oldIndex, newIndex);
     setButtonList(buttonCopy);
   };
 
@@ -93,7 +104,7 @@ const Calculator = () => {
   const renderButtons = (items) => {
     return (
       <SortableList
-        distance={2}
+        distance={1}
         items={items}
         onSortEnd={(result) => {
           onSortEnd(result);
