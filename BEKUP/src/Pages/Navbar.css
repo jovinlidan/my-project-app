@@ -1,0 +1,14 @@
+.navbar-item {
+  color: white;
+  margin-right: 20px;
+}
+a:hover {
+  text-decoration: none;
+  color: rgb(255, 121, 121);
+  transform: scale(1.01, 1.01);
+  transition: all 0.2s ease-in-out;
+}
+.brand {
+  color: white !important;
+  font-family: "Varela Round", sans-serif;
+}

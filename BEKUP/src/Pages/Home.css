@@ -1,0 +1,16 @@
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+img {
+  height: 40vh;
+  width: 100vw;
+  background-color: blue;
+}
+
+.content-wrapper {
+  flex-basis: 1;
+  height: 100vh;
+  width: 100vw;
+  background-color: red;
+}

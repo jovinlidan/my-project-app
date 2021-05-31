@@ -1,0 +1,110 @@
+.chat-room{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(100, 206, 248)   ;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: hidden;
+    
+}
+
+.chat-box{
+    margin : 10px;
+    background-color: rgb(208, 239, 250);
+    flex: 1;
+}
+
+
+.chat-screen{
+    display: flex;
+    flex-direction: column;
+    margin : 10px;
+    margin-left : 0px;
+    background-color: rgb(74, 179, 221);
+    flex : 3;
+}
+.add-contact{
+    display: flex;
+    
+}
+.add-contact .add-input{
+    flex: 5;
+    margin : 5px;
+}
+.add-contact .add-button{
+    margin : 5px;
+    margin-left: 0px;
+}
+.chat-room .chat-screen .name{
+    border : 1px solid white;
+    background-color: rgb(199, 199, 199);
+    height : 40px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    font-size: 20px ;
+}
+.chat-room .chat-screen .conversation{
+    border : 1px solid white;
+    height: 80vh;
+    overflow-y: scroll;
+}
+.contact{
+    display: flex;
+}
+.contact button{
+    margin: 5px;    
+    margin-left: 0px;
+
+}
+
+.contact-bubble{
+    box-sizing: border-box;
+    display: flex;
+    height: 50px;
+    margin : 5px;
+    border : 1px solid grey;
+    justify-content: space-between;
+    align-items: center;
+    flex : 6;
+}
+
+.contacts .contact-bubble:hover{
+    cursor: pointer;
+}
+.chat-screen .input-field{
+    height: 40px;
+    display: flex;
+}
+.chat-screen .input-field input{
+    display: flex;
+    flex : 9;
+    font-size: larger;
+}
+.chat-screen .input-field button{
+    flex : 1;
+
+
+}
+
+.conversation {
+    display: flex;
+    flex-direction: column;
+
+}
+.conversation .target{
+    padding: 5px;
+    background-color: rgb(0, 255, 234);
+    font-size: 18px;
+    color : black;
+    width: fit-content;
+    
+}
+.conversation .me{
+    padding: 5px;
+    background-color:rgb(0, 255, 0);
+    text-align: right; 
+    font-size: 18px;
+    align-self: flex-end;
+    width: fit-content;
+    color : black;
+}

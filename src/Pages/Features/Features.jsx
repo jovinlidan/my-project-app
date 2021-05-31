@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import calculatorImg from "../../assets/images/calculator.png";
 import tictactoeImg from "../../assets/images/tictactoe.png";
+import weatherImg from "../../assets/images/weather.png";
+import chatroomImg from "../../assets/images/chat.png";
 import Card from "./../../components/Card";
 import "./Features.css";
 const Features = ({ location }) => {
   const features = [
-    { src: calculatorImg, name: "CALCULATOR" },
-    { src: tictactoeImg, name: "TICTACTOE" },
-    { src: calculatorImg, name: "WEATHER" },
+    { src: calculatorImg, name: "Calculator" },
+    { src: tictactoeImg, name: "Tictactoe" },
+    { src: weatherImg, name: "Weather" },
+    { src: chatroomImg, name: "Chatroom" },
   ];
   useEffect(() => {
     setOverflow(); // MEMPERBAIKI MASALAH DRAG AND DROP

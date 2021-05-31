@@ -1,0 +1,56 @@
+.tictactoe-wrapper {
+    width: 100%;
+    height: 100vh;
+    background: #00d2ff; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #928dab,
+      #00d2ff
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #928dab,
+      #00d2ff
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  .mode-select {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    color: white;
+  }
+  
+  .mode-btn {
+    margin: 10px;
+    background-color: #141e30;
+    font-weight: 700;
+    padding: 2%;
+    border: 1px solid white;
+    border-radius: 5%;
+    cursor: pointer;
+  }
+  .active-mode {
+    background-color: blue;
+  }
+  
+  .board {
+    padding: 30%;
+    padding-top: 1%;
+    padding-bottom: 0%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1px;
+  }
+  .board div::before {
+    content: "";
+    padding-bottom: 100%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .tictactoe-btn,
+  .active-btn {
+    font-size: 5rem;
+    border: 1px solid black;
+    text-align: center;
+  }
+  
